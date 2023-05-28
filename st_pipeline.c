@@ -11,13 +11,13 @@ ActiveObject *ao2;
 ActiveObject *ao3;
 ActiveObject *ao4;
 
-int is_prime(long num)
+int is_prime(unsigned int num)
 {
     if (num <= 1)
         return 0;
     if (num % 2 == 0 && num > 2)
         return 0;
-    for (long i = 3; i * i <= num; i += 2)
+    for (unsigned int i = 3; i * i <= num; i += 2)
     {
         if (num % i == 0)
             return 0;
@@ -63,7 +63,6 @@ int task4(void *data)
 {
     int *num = (int *)data;
     printf("%d\n", *num);
-    printf("%s\n", is_prime(*num) ? "true" : "false");
     *num += 2;
     printf("%d\n", *num);
     return 0;
