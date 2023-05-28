@@ -19,7 +19,10 @@ OBJS = $(SRCS:.c=.o)
 # Define the output name
 OUT = st_pipeline
 
-# The first target is the one make chooses by default. So let's put the final binary up top.
+# The "all" target will build the final binary
+all: $(OUT)
+
+# The final binary depends on the object files
 $(OUT): $(OBJS)
 	$(LD) -o $(OUT) $(OBJS) $(LDFLAGS)
 
@@ -27,6 +30,6 @@ $(OUT): $(OBJS)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean target to remove temporary and binary files.
+# Clean target to remove temporary and binary files
 clean:
 	rm -f $(OBJS) $(OUT)
